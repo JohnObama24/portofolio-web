@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-900 text-zinc-100 font-mono overflow-hidden h-screen w-screen m-0 p-0;
+  }
+}
+
+/* Custom Scrollbar for terminal/details */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-zinc-800;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-600 rounded;
+}
+::-webkit-scrollbar-corner {
+  @apply bg-zinc-800;
+}
