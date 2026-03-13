@@ -21,7 +21,16 @@
         v-else-if="line.type === 'output'"
         class="whitespace-pre-wrap text-[#bac2de]"
       >
-        {{ line.text.trim() }}
+        {{ line.text?.trim() }}
+      </div>
+      <div v-else-if="line.type === 'neofetch'" class="flex flex-col sm:flex-row gap-4 items-center sm:items-start text-[#bac2de]">
+        <div class="sm:w-1/3 w-3/4 max-w-[400px]">
+          <img :src="line.imgSrc" alt="gambar" class="w-full h-auto rounded-md" v-if="line.imgSrc"/>
+          <div v-else class="text-center italic opacity-50 border border-dashed border-zinc-500 rounded p-4">Image placeholder: {{ line.imgSrc }}</div>
+        </div>
+        <div class="whitespace-pre-wrap flex-1 mt-2 sm:mt-0">
+          {{ line.text?.trim() }}
+        </div>
       </div>
 
     </div>
@@ -31,39 +40,31 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const lines = ref([
+interface ConsoleLine {
+  type: "cmd" | "output" | "neofetch";
+  text?: string;
+  imgSrc?: string;
+}
+
+const ObjectLine = (line: ConsoleLine) => line;
+
+import asciiImage from '~/assets/images/ascii-art-text.png';
+
+const lines = ref<ConsoleLine[]>([
   { type: "cmd", text: "neofetch" },
   {
-    type: "output",
-    text: `
-       _,met$$$$$gg.          john@porto
-    ,g$$$$$$$$$$$$$$$P.       ----------
-  ,g$$P"     """Y$$.".        OS: Arch Linux x86_64
- ,$$P'              \`$$$.     Host: TWM Portfolio
-',$$P       ,ggs.     \`$$b:   Kernel: 6.8.9-arch1-1
-\`d$$'     ,$P"'   .    $$$    Uptime: 24 mins
- $$P      d$'     ,    $$P    Packages: 999 (pacman)
- $$:      $$.   -    ,d$$'    Shell: zsh 5.9
- $$;      Y$b._   _,d$P'      Resolution: 1920x1080
- Y$b       \`"Y$$$$P"'         WM: bspwm
- \`Y$b        '"'              Theme: Gruvbox Dark
-  \`Y$b                        Icons: Papirus-Dark
-    \`$$b.                     Terminal: Alacritty
-      \`Y$$b.                  CPU: AMD Ryzen 7 5800X
-        \`"Y$b._               GPU: NVIDIA GeForce RTX 3080
-            \`""""             Memory: 4096MiB / 32000MiB
-  `,
+    type: "neofetch",
+    imgSrc: asciiImage,
+    text: `hai`,
   },
-  { type: "cmd", text: "" }, // waiting for input
+  { type: "cmd", text: "" }, 
 ]);
 
 const currentInput = ref("");
 
-
 const handleEnter = () => {
   const cmd = currentInput.value.trim();
 
-  // Update line terakhir (input yang barusan di ketik) dari kosong jadi command
   if (lines.value.length > 0) {
     lines.value[lines.value.length - 1]!.text = cmd;
   }
@@ -72,11 +73,9 @@ const handleEnter = () => {
     runCommand(cmd);
   }
 
-  // Tambahkan baris baru untuk input command selanjutnya
   lines.value.push({ type: "cmd", text: "" });
-  currentInput.value = ""; // Reset input text
+  currentInput.value = ""; 
 
-  // Scroll to bottom (optional, but good UX)
   setTimeout(() => {
     const termDiv = document.querySelector('.overflow-y-auto');
     if (termDiv) termDiv.scrollTop = termDiv.scrollHeight;
@@ -96,27 +95,27 @@ const runCommand = (cmd: string) => {
       lines.value = [];
       break;
     case "ls":
-      lines.value.push({ type: "output", text: "about.txt\nprojects/\ncontact.txt" });
+      lines.value.push({ type: "output", text: "about.txt\ncontact.txt" });
       break;
     case "cat about.txt":
-      lines.value.push({ type: "output", text: "Halo! Saya adalah developer yang sedang belajar bikin Web mirip Linux TWM." });
+      lines.value.push({ type: "output", text: "Halo! Saya adalah John ." });
+      break;
+    case "github":
+      window.open("https://github.com/JohnObama24/", "_blank")
+      lines.value.push({ type: "output", text: "redirecting to github..." });
+      break;
+    case "instagram":
+      window.open("https://www.instagram.com/johnobama_/", "_blank")
+      lines.value.push({ type: "output", text: "redirecting to instagram..." });
       break;
     case "help":
-      lines.value.push({ type: "output", text: "Available commands:\n- ls\n- cat [file]\n- neofetch\n- clear\n- help" });
+      lines.value.push({ type: "output", text: "Available commands:\n- ls\n- cat [file]\n- neofetch\n- clear\n- help\n- github\n- instagram\n- linkedin\n-  " });
       break;
     case "neofetch":
       lines.value.push({
-        type: "output",
-        text: `
-       _,met$$$$$gg.          john@porto
-    ,g$$$$$$$$$$$$$$$P.       ----------
-  ,g$$P"     """Y$$.".        OS: Arch Linux x86_64
- ,$$P'              \`$$$.     Host: TWM Portfolio
-',$$P       ,ggs.     \`$$b:   Kernel: 6.8.9-arch1-1
-\`d$$'     ,$P"'   .    $$$    Uptime: 24 mins
- $$P      d$'     ,    $$P    Packages: 999 (pacman)
- $$:      $$.   -    ,d$$'    Shell: zsh 5.9
-    `
+        type: "neofetch",
+        imgSrc: asciiImage,
+        text: `hai`
       });
       break;
     default:
