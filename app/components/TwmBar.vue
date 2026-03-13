@@ -25,9 +25,9 @@ onUnmounted(() => {
   <header class="flex items-center justify-between px-2 h-6 bg-zinc-950 text-xs border-b border-zinc-700/50 shadow-md">
     <!-- Workspaces -->
     <div class="flex items-center gap-1 h-full">
-      <div class="px-2 h-full flex items-center bg-zinc-700 text-zinc-100 font-bold">[1] home</div>
-      <div class="px-2 h-full flex items-center text-zinc-500 hover:text-zinc-300 transition-colors cursor-default">[2] project</div>
-      <div class="px-2 h-full flex items-center text-zinc-500 hover:text-zinc-300 transition-colors cursor-default">[3] contact</div>
+      <NuxtLink to="/" class="px-2 h-full flex items-center transition-colors font-bold" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">[1] home</NuxtLink>
+      <NuxtLink to="/project" class="px-2 h-full flex items-center transition-colors font-bold" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">[2] project</NuxtLink>
+      <NuxtLink to="/contact" class="px-2 h-full flex items-center transition-colors font-bold" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">[3] contact</NuxtLink>
     </div>
 
     <!-- Window Title -->
