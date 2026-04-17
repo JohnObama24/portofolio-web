@@ -5,11 +5,11 @@
     <LazyNuxtRouteAnnouncer />
 
     <!-- Top Status Bar acts as global layout Navbar -->
-    <TwmBar />
+    <BarComponent />
 
     <!-- Page Content Area -->
     <main
-      class="flex-1 flex gap-2 p-2 relative overflow-hidden transition-opacity duration-1000"
+      class="flex-1 flex flex-col lg:flex-row gap-2 p-2 relative overflow-y-auto overflow-x-hidden lg:overflow-hidden transition-opacity duration-1000"
       :class="isDesktopReady ? 'opacity-100' : 'opacity-0'"
     >
       <NuxtPage />
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import TwmBar from "~/components/TwmBar.vue";
+import BarComponent from "~/components/BarComponent.vue";
 import { onMounted, ref } from "vue";
 
 const isDesktopReady = ref(false);

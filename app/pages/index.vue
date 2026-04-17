@@ -1,40 +1,40 @@
 <template>
-  <div class="flex-1 flex gap-2 h-full w-full">
+  <div class="flex-1 flex flex-col lg:flex-row gap-2 h-full w-full">
     <!-- Left side: Main Terminal Portfolio -->
     <div
-      class="flex-1 flex flex-col h-full animate-[fade-in-up_0.5s_ease-out]"
+      class="flex-1 flex flex-col min-h-[60vh] lg:min-h-0 lg:h-full animate-[fade-in-up_0.5s_ease-out]"
     >
-      <TwmWindow
+      <WindowComponent
         title="terminal - john@porto: ~"
         :isActive="true"
         class="h-full shadow-xl"
       >
-        <TerminalApp />
-      </TwmWindow>
+        <TerminalComponent />
+      </WindowComponent>
     </div>
 
     <!-- Right side: Utilities / Cava -->
-    <div class="w-1/3 flex flex-col gap-2 h-full">
-      <TwmWindow
+    <div class="w-full lg:w-1/3 flex flex-col gap-2 h-auto lg:h-full shrink-0">
+      <WindowComponent
         title="skills"
-        class="h-1/3 animate-[fade-in-up_0.6s_ease-out]"
+        class="min-h-[30vh] lg:min-h-0 lg:h-1/3 animate-[fade-in-up_0.6s_ease-out]"
       >
-        <SkillsApp />
-      </TwmWindow>
+        <SkillsComponent />
+      </WindowComponent>
 
-      <TwmWindow
+      <WindowComponent
         title="music-favorite"
-        class="flex-1 animate-[fade-in-up_0.7s_ease-out]"
+        class="flex-1 min-h-[30vh] lg:min-h-0 animate-[fade-in-up_0.7s_ease-out]"
       >
-        <CavaApp />
-      </TwmWindow>
+        <MusicComponent />
+      </WindowComponent>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import TwmWindow from "~/components/TwmWindow.vue";
-import TerminalApp from "~/components/apps/TerminalApp.vue";
-import CavaApp from "~/components/apps/CavaApp.vue";
-import SkillsApp from "~/components/apps/SkillsApp.vue";
+import WindowComponent from "~/components/WindowComponent.vue";
+import TerminalComponent from "~/components/apps/TerminalComponent.vue";
+import MusicComponent from "~/components/apps/MusicComponent.vue";
+import SkillsComponent from "~/components/apps/SkillsComponent.vue";
 </script>

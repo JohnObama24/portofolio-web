@@ -7,15 +7,18 @@
         <span class="text-[#a6e3a1] font-bold">john@porto</span>
         <span class="text-[#cdd6f4]">~</span>
         <span class="text-[#89b4fa] font-bold">$</span>
-        <span class="text-[#cdd6f4] break-all">{{ line.text }}</span>
-        <span v-if="index === lines.length - 1" class="ml-1 flex-1">
+        <span v-if="index !== lines.length - 1" class="text-[#cdd6f4] break-all">{{ line.text }}</span>
+        <div v-else class="ml-1 flex-1 relative leading-none">
+          <span class="text-[#cdd6f4] font-mono break-all whitespace-pre-wrap">{{ currentInput }}</span><span class="inline-block w-2.5 h-4 bg-[#cdd6f4] animate-blink align-middle mb-[3px] ml-[1px]"></span>
           <input
             v-model="currentInput"
             @keydown.enter="handleEnter"
-            class="bg-transparent outline-none w-full"
+            class="absolute inset-0 bg-transparent outline-none text-transparent caret-transparent w-full h-full cursor-text"
             autofocus
+            spellcheck="false"
+            autocomplete="off"
           />
-        </span>
+        </div>
       </div>
       <div
         v-else-if="line.type === 'output'"
@@ -55,7 +58,7 @@ const lines = ref<ConsoleLine[]>([
   {
     type: "neofetch",
     imgSrc: asciiImage,
-    text: `hai`,
+    text: `ketik help coba`,
   },
   { type: "cmd", text: "" }, 
 ]);
@@ -124,3 +127,14 @@ const runCommand = (cmd: string) => {
   }
 };
 </script>
+
+<style scoped>
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+</style>
