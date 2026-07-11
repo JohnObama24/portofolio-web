@@ -23,3 +23,152 @@
 ::-webkit-scrollbar-corner {
   @apply bg-zinc-800;
 }
+
+/* ==========================================================================
+   Retro CRT Analog Monitor Effect CSS
+   ========================================================================== */
+
+/* Outer chassis of the monitor - simulates a physical terminal screen frame */
+.crt-bezel {
+  transition: all 0.5s ease-in-out;
+  background-color: #0b0b0e;
+}
+
+.crt-bezel.crt-active {
+  padding: 8px;
+  border: 12px solid #1a1a1f;
+  border-radius: 24px;
+  box-shadow: 
+    inset 0 0 20px rgba(0, 0, 0, 1),
+    0 10px 40px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  background-color: #0f0f12;
+}
+
+@media (min-width: 768px) {
+  .crt-bezel.crt-active {
+    padding: 16px;
+    border: 24px solid #1a1a1f;
+    border-radius: 36px;
+  }
+}
+
+/* Screen container - handles curvature warp, glow, and animations */
+.crt-screen-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #11111b;
+  transition: all 0.5s ease-in-out;
+}
+
+.crt-bezel.crt-active .crt-screen-wrap {
+  border-radius: 20px;
+  box-shadow: 
+    inset 0 0 80px rgba(0, 0, 0, 0.95),
+    inset 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+/* Base flicker animation to mimic unstable CRT phosphor glow */
+@keyframes crt-glow-flicker {
+  0% { opacity: 0.985; }
+  50% { opacity: 1; }
+  100% { opacity: 0.985; }
+}
+
+.crt-screen-wrap.crt-active {
+  animation: crt-glow-flicker 0.15s infinite;
+}
+
+/* CRT Screen Overlays: Vignette, horizontal scanlines, and RGB phosphor grid */
+.crt-effects-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  background: 
+    radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%),
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+  background-size: 100% 100%, 100% 4px, 6px 100%;
+}
+
+/* Glass screen gloss reflection glare */
+.crt-glare-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1001;
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 35%);
+}
+
+/* Subtle scrolling line to simulate refreshing / tracking roll */
+@keyframes crt-roll-anim {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.crt-roll-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.4;
+  background: linear-gradient(rgba(18, 16, 16, 0) 0%, rgba(255, 255, 255, 0.08) 10%, rgba(18, 16, 16, 0) 20%);
+  animation: crt-roll-anim 10s linear infinite;
+}
+
+/* VHS Retro Indicator HUD (Blends beautifully in the corner of the layout) */
+.vhs-hud {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  font-family: monospace;
+  font-size: 12px;
+  color: rgba(34, 197, 94, 0.85); /* Tailwind green-500 */
+  text-shadow: 0 0 4px rgba(34, 197, 94, 0.5);
+  pointer-events: none;
+  z-index: 950;
+  line-height: 1.4;
+}
+
+.vhs-blink {
+  animation: vhs-blink-anim 1s steps(2, start) infinite;
+}
+
+@keyframes vhs-blink-anim {
+  to { visibility: hidden; }
+}
+
+/* Power On effect: collapses the screen into a single line then opens it */
+@keyframes crt-power-on {
+  0% {
+    transform: scaleY(0.01) scaleX(0);
+    filter: brightness(5) contrast(2);
+  }
+  40% {
+    transform: scaleY(0.01) scaleX(1);
+    filter: brightness(4) contrast(1.5);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+    filter: brightness(1) contrast(1);
+  }
+}
+
+.crt-power-on-active {
+  animation: crt-power-on 0.75s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  transform-origin: center;
+}

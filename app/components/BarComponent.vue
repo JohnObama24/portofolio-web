@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const time = ref('')
 const date = ref('')
+const isCrtActive = useState('crt-active', () => true)
 
 let interval: number
 
@@ -43,6 +44,16 @@ onUnmounted(() => {
 
     <!-- System Tray -->
     <div class="flex items-center gap-2 md:gap-3 h-full text-zinc-400 shrink-0 z-10 ml-auto">
+      <!-- VFX Toggle Button -->
+      <button 
+        @click="isCrtActive = !isCrtActive" 
+        class="flex items-center gap-1 px-1.5 py-0.5 rounded border transition-all cursor-pointer font-bold select-none text-[9px] md:text-[10px]"
+        :class="isCrtActive ? 'bg-indigo-950/40 border-indigo-700/60 text-indigo-400 shadow-[0_0_8px_rgba(99,102,241,0.15)]' : 'bg-zinc-900 border-zinc-800 text-zinc-500 hover:border-zinc-700 hover:text-zinc-300'"
+      >
+        <span>vfx:</span>
+        <span class="uppercase">{{ isCrtActive ? 'crt' : 'flat' }}</span>
+      </button>
+
       <div class="hidden md:flex items-center gap-1">
         <span class="text-zinc-500">vol</span>
         <span>75%</span>
