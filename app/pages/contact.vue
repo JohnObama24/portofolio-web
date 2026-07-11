@@ -1,57 +1,122 @@
 <template>
-  <div class="flex-1 flex flex-col lg:flex-row gap-2 h-full w-full">
-    <div class="flex-1 flex flex-col min-h-[80vh] lg:h-full animate-[fade-in-up_0.5s_ease-out]">
-      <WindowComponent title="contact" :isActive="true" class="h-full shadow-xl">
-        <div class="h-full w-full bg-[#1e1e2e] text-[#cdd6f4] p-4 font-mono text-sm flex flex-col items-center justify-center gap-6 relative overflow-y-auto">
+  <div class="flex-1 flex flex-col lg:flex-row gap-2 h-full w-full font-mono text-[#33ff33]">
+    <!-- Left Panel: Mail Client & Suggestion Form -->
+    <div class="flex-1 flex flex-col min-h-[50vh] lg:min-h-0 lg:h-full animate-[fade-in-up_0.5s_ease-out]">
+      <WindowComponent title="mail-client" :isActive="true" class="h-full">
+        <div class="h-full w-full bg-black text-[#33ff33] p-3 flex flex-col gap-4 overflow-y-auto">
           
-          <div class="absolute top-4 left-4 flex gap-2">
-            <span class="text-[#f38ba8]">root@contact</span> <span class="text-[#cdd6f4]">~ #</span>
-            <span class="text-[#a6adc8]">systemctl status social-links.service</span>
-          </div>
-
-          <!-- anjing isi apaan yak -->
-          <div class="w-full max-w-lg mb-8 text-[#a6adc8] flex flex-col gap-1">
-            <div class="flex gap-2">
-              <span class="text-[#a6e3a1]">●</span> <span class="text-[#cdd6f4] font-bold">Keep in touch with me</span>
+          <!-- System Status Header -->
+          <div class="flex flex-col gap-1 border-b border-[#33ff33]/20 pb-2">
+            <div class="flex gap-2 text-xs">
+              <span class="text-[#33ff33]">root@contact</span> <span class="text-white">~ #</span>
+              <span class="text-[#33ff33]/70">systemctl status social-links.service</span>
             </div>
-            <div class="ml-4">
-              <!-- <span>Loaded: loaded (/etc/systemd/system/social-links.service; enabled)</span><br>
-              <span>Active: <span class="text-[#a6e3a1] font-bold">active (running)</span> since {{ formattedDate }}</span><br>
-              <span>  Docs: man:social(8)</span><br> -->
-              <span>hi</span><br>
+            <div class="flex gap-2 items-center text-xs mt-1">
+              <span class="text-[#33ff33] animate-pulse">●</span>
+              <span class="font-bold">Keep in touch / send suggestions</span>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl">
-            <a href="https://github.com/JohnObama24/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 p-6 bg-[#181825] border border-[#313244] hover:border-[#89b4fa] rounded-lg transition-colors group cursor-pointer shadow-md">
-              <div class="text-[#cdd6f4] group-hover:text-[#89b4fa] transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              </div>
-              <span class="font-bold">GitHub</span>
+          <!-- Social Links grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <a href="https://github.com/JohnObama24/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 p-2 bg-black border border-[#33ff33]/30 hover:border-[#33ff33] text-xs font-bold transition-all hover:bg-[#33ff33] hover:text-black">
+              <span>GitHub</span>
             </a>
-
-             <a href="https://www.instagram.com/johnobama_/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 p-6 bg-[#181825] border border-[#313244] hover:border-[#f38ba8] rounded-lg transition-colors group cursor-pointer shadow-md">
-              <div class="text-[#cdd6f4] group-hover:text-[#f38ba8] transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.85-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-              </div>
-              <span class="font-bold">Instagram</span>
+            <a href="https://www.instagram.com/johnobama_/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 p-2 bg-black border border-[#33ff33]/30 hover:border-[#33ff33] text-xs font-bold transition-all hover:bg-[#33ff33] hover:text-black">
+              <span>Instagram</span>
             </a>
-
-            <a href="https://linkedin.com/in/JohnObama24" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 p-6 bg-[#181825] border border-[#313244] hover:border-[#89dceb] rounded-lg transition-colors group cursor-pointer shadow-md">
-              <div class="text-[#cdd6f4] group-hover:text-[#89dceb] transition-colors">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </div>
-              <span class="font-bold">LinkedIn</span>
+            <a href="https://linkedin.com/in/JohnObama24" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 p-2 bg-black border border-[#33ff33]/30 hover:border-[#33ff33] text-xs font-bold transition-all hover:bg-[#33ff33] hover:text-black">
+              <span>LinkedIn</span>
             </a>
-
-            <a href="mailto:johnobama24keren@gmail.com" class="flex flex-col items-center gap-3 p-6 bg-[#181825] border border-[#313244] hover:border-[#a6e3a1] rounded-lg transition-colors group cursor-pointer shadow-md">
-              <div class="text-[#cdd6f4] group-hover:text-[#a6e3a1] transition-colors">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
-              </div>
-              <span class="font-bold">Email</span>
+            <a href="mailto:johnobama24keren@gmail.com" class="flex items-center justify-center gap-1.5 p-2 bg-black border border-[#33ff33]/30 hover:border-[#33ff33] text-xs font-bold transition-all hover:bg-[#33ff33] hover:text-black">
+              <span>Email</span>
             </a>
           </div>
 
+          <!-- Suggestion Form -->
+          <form @submit.prevent="handleSubmit" class="flex flex-col gap-3 border-t border-[#33ff33]/20 pt-3">
+            <div class="text-xs font-bold uppercase tracking-widest text-white border-b border-[#33ff33]/15 pb-1">
+              [ MESSAGE TRANSMISSION CLIENT ]
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2">
+              <div class="flex-1 flex flex-col gap-1">
+                <label class="text-[10px] uppercase text-[#33ff33]/70 font-bold">NAME / SENDER</label>
+                <input 
+                  v-model="form.name"
+                  type="text" 
+                  placeholder="Guest User"
+                  @input="handleInput"
+                  @blur="handleBlur"
+                  :disabled="isSubmitting"
+                  class="bg-black border border-[#33ff33]/40 focus:border-[#33ff33] focus:outline-none p-2 text-[#33ff33] text-xs"
+                />
+              </div>
+              <div class="flex-1 flex flex-col gap-1">
+                <label class="text-[10px] uppercase text-[#33ff33]/70 font-bold">EMAIL ADDRESS *</label>
+                <input 
+                  v-model="form.email"
+                  type="email" 
+                  placeholder="your-email@example.com"
+                  @input="handleInput"
+                  @blur="handleBlur"
+                  :disabled="isSubmitting"
+                  required
+                  class="bg-black border border-[#33ff33]/40 focus:border-[#33ff33] focus:outline-none p-2 text-[#33ff33] text-xs"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="text-[10px] uppercase text-[#33ff33]/70 font-bold">MESSAGE BODY *</label>
+              <textarea 
+                v-model="form.message"
+                placeholder="Type your message or suggestion here..."
+                @input="handleInput"
+                @blur="handleBlur"
+                :disabled="isSubmitting"
+                required
+                class="bg-black border border-[#33ff33]/40 focus:border-[#33ff33] focus:outline-none p-2 text-[#33ff33] text-xs h-20 resize-none"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              :disabled="isSubmitting"
+              class="w-full bg-black border border-[#33ff33] text-[#33ff33] font-bold p-2 text-xs transition-colors cursor-pointer select-none disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#33ff33] hover:text-black"
+            >
+              {{ isSubmitting ? 'TRANSMITTING...' : 'SEND SUGGESTION' }}
+            </button>
+          </form>
+
+          <!-- logs terminal kayak hengkeer-->
+          <div v-if="logs.length > 0" class="mt-1 p-2 bg-[#051105] border border-[#33ff33]/30 font-mono text-[11px] flex flex-col gap-1 max-h-36 overflow-y-auto">
+            <div v-for="(log, i) in logs" :key="i" :class="log.color">
+              {{ log.text }}
+            </div>
+          </div>
+
+        </div>
+      </WindowComponent>
+    </div>
+
+    <!-- Right Panel: angri birt -->
+    <div class="w-full lg:w-2/5 flex flex-col min-h-[40vh] lg:min-h-0 lg:h-full animate-[fade-in-up_0.6s_ease-out]">
+      <WindowComponent title="live-monitor" :isActive="isTyping" class="h-full">
+        <div class="flex flex-col items-center justify-center h-full p-4 gap-4 bg-black">
+          <div class="w-full border border-[#33ff33] p-1 bg-black relative">
+            <!-- Typing / Idle  -->
+            <span class="absolute top-2 left-2 bg-black px-1.5 py-0.5 border border-[#33ff33] text-[9px] font-bold tracking-widest transition-all" :class="isTyping ? 'text-[#33ff33] border-[#33ff33]' : 'text-zinc-600 border-zinc-800'">
+              {{ isTyping ? '● MONITORING ACTION' : '○ MONITOR STANDBY' }}
+            </span>
+            <img :src="currentImage" alt="action state" class="w-full h-auto max-h-[220px] md:max-h-[300px] object-contain transition-all duration-300 mx-auto" />
+          </div>
+          
+          <div class="w-full font-mono text-[10px] flex flex-col border border-[#33ff33]/30 p-2 gap-1 bg-[#051105]">
+            <div>MONITOR ID: LVM-1995</div>
+            <div>STATUS: {{ isTyping ? 'USER DETECTED WRITING...' : 'IDLING / WAITING' }}</div>
+            <div class="text-[9px] opacity-60">CLOCK: {{ formattedDate }}</div>
+          </div>
         </div>
       </WindowComponent>
     </div>
@@ -59,24 +124,128 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import WindowComponent from "~/components/WindowComponent.vue";
 
 const formattedDate = ref('')
+const isTyping = ref(false)
+const currentImage = ref('/images/default.png')
+
+const form = ref({
+  name: '',
+  email: '',
+  message: ''
+})
+
+const isSubmitting = ref(false)
+interface LogLine {
+  text: string;
+  color: string;
+}
+const logs = ref<LogLine[]>([])
+
+let clockInterval: number
+let idleTimeout: number
+
+const handleInput = () => {
+  isTyping.value = true
+  currentImage.value = '/images/writing.png'
+  
+  if (idleTimeout) clearTimeout(idleTimeout)
+  
+  idleTimeout = window.setTimeout(() => {
+    isTyping.value = false
+    currentImage.value = '/images/default.png'
+  }, 1000)
+}
+
+const handleBlur = () => {
+  // Let activeElement transition slightly, then return if not focused elsewhere
+  setTimeout(() => {
+    const active = document.activeElement
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+      return
+    }
+    isTyping.value = false
+    currentImage.value = '/images/default.png'
+    if (idleTimeout) clearTimeout(idleTimeout)
+  }, 100)
+}
+
+const handleSubmit = () => {
+  if (!form.value.email || !form.value.message) {
+    logs.value = [
+      { text: '[ERROR] CANNOT TRANSMIT. EMAIL & MESSAGE REQUIRED.', color: 'text-red-500 font-bold' }
+    ]
+    return
+  }
+
+  isSubmitting.value = true
+  logs.value = []
+  
+  const addLog = (text: string, color = 'text-[#33ff33]', delay: number) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        logs.value.push({ text, color })
+        resolve(true)
+        // Scroll terminal logs to bottom
+        setTimeout(() => {
+          const logDiv = document.querySelector('.overflow-y-auto')
+          if (logDiv) logDiv.scrollTop = logDiv.scrollHeight
+        }, 10)
+      }, delay)
+    })
+  }
+
+  // Chain SMTP animation steps
+  addLog('[INIT] CONNECTING TO OUTBOUND MAIL SERVER...', 'text-white', 0)
+    .then(() => addLog('[SMTP] CONNECTED TO mail.johnobama.me:25', 'text-[#33ff33]', 500))
+    .then(() => addLog('[SMTP] HELO mail.johnobama.me ... OK', 'text-[#33ff33]', 400))
+    .then(() => addLog(`[SMTP] MAIL FROM: <${form.value.email}> ... OK`, 'text-[#33ff33]', 400))
+    .then(() => addLog('[SMTP] RCPT TO: <johnobama24keren@gmail.com> ... OK', 'text-[#33ff33]', 400))
+    .then(() => addLog('[SMTP] TRANSMITTING HEADER & DATA BLOCK...', 'text-white', 500))
+    .then(() => addLog('[SMTP] QUEUED IN SMTP SPOOLER. HANDING TO LOCAL MAIL CLIENT...', 'text-[#33ff33] font-bold', 400))
+    .then(() => addLog('[SUCCESS] REDIRECTED TO MAIL CLIENT GATEWAY!', 'text-green-400 font-bold', 300))
+    .then(() => {
+      // Build mailto URI to compile and send the email
+      const nameVal = form.value.name || 'Guest User'
+      const subject = `Portfolio Suggestion from ${nameVal}`
+      const body = `Sender Name: ${nameVal}\nSender Email: ${form.value.email}\n\nMessage:\n${form.value.message}`
+      
+      const mailtoUri = `mailto:johnobama24keren@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      
+      // Dispatch mailto action to compose mail
+      window.location.href = mailtoUri
+
+      // Clear form inputs
+      form.value.name = ''
+      form.value.email = ''
+      form.value.message = ''
+      isSubmitting.value = false
+    })
+}
 
 onMounted(() => {
-  const d = new Date()
-  formattedDate.value = d.toLocaleString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit', second:'2-digit' })
+  const updateClock = () => {
+    const d = new Date()
+    formattedDate.value = d.toLocaleString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit', second:'2-digit' })
+  }
+  updateClock()
+  clockInterval = window.setInterval(updateClock, 1000)
+})
+
+onUnmounted(() => {
+  clearInterval(clockInterval)
+  if (idleTimeout) clearTimeout(idleTimeout)
 })
 </script>
 
 <style scoped>
-.animate-blink {
-  animation: blink 1s step-end infinite;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>

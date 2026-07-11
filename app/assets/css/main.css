@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-zinc-900 text-zinc-100 font-mono overflow-hidden h-screen w-screen m-0 p-0;
+    @apply bg-black text-[#33ff33] font-mono overflow-hidden h-screen w-screen m-0 p-0;
   }
 }
 
@@ -15,13 +15,15 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-zinc-800;
+  @apply bg-black;
+  border-left: 1px solid rgba(51, 255, 51, 0.2);
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-zinc-600 rounded;
+  @apply bg-[#33ff33]/30 hover:bg-[#33ff33]/60;
+  border: 1px solid rgba(51, 255, 51, 0.4);
 }
 ::-webkit-scrollbar-corner {
-  @apply bg-zinc-800;
+  @apply bg-black;
 }
 
 /* ==========================================================================
@@ -171,4 +173,4 @@
 .crt-power-on-active {
   animation: crt-power-on 0.75s cubic-bezier(0.19, 1, 0.22, 1) forwards;
   transform-origin: center;
-}
+}

@@ -3,11 +3,11 @@
     <!-- Monitor Chassis (Bezel) -->
     <div
       class="crt-bezel w-full h-full flex flex-col"
-      :class="{ 'crt-active': isCrtActive }"z0
+      :class="{ 'crt-active': isCrtActive }"
     >
       <!-- Monitor Screen glass container -->
       <div 
-        class="crt-screen-wrap flex flex-col w-full h-full text-sm antialiased selection:bg-indigo-500/30 selection:text-indigo-200 bg-[#1e1e2e]"
+        class="crt-screen-wrap flex flex-col w-full h-full text-sm antialiased selection:bg-[#33ff33]/30 selection:text-white bg-black"
         :class="{ 
           'crt-active': isCrtActive, 
           'crt-power-on-active': isCrtActive && isPowerOnAnimating 

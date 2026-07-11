@@ -13,13 +13,13 @@ export const projects = [
         image: "/images/project-2.png",
         link: "https://github.com/SynchronizesTeams/absensi-penus-client"
     },
-    {
-        id: 3,
-        title: "Reality Club Portfolio",
-        description: "A highly creative, responsive, and aesthetically pleasing portfolio website. The project is built using Nuxt 3 and Tailwind CSS, incorporating a unique window-manager interface.",
-        image: "/images/project-1.png",
-        link: "https://github.com/JohnObama24/portofolio-web"
-    },
+    // {
+    //     id: 3,
+    //     title: "Reality Club Portfolio",
+    //     description: "A highly creative, responsive, and aesthetically pleasing portfolio website. The project is built using Nuxt 3 and Tailwind CSS, incorporating a unique window-manager interface.",
+    //     image: "/images/project-1.png",
+    //     link: "https://github.com/JohnObama24/portofolio-web"
+    // },
     {
         id: 4,
         title: "E-Commerce Admin Dashboard",

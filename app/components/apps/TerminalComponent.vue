@@ -1,15 +1,15 @@
 <template>
   <div
-    class="h-full w-full bg-[#1e1e2e] text-[#cdd6f4] p-2 overflow-y-auto font-mono text-sm"
+    class="h-full w-full bg-black text-[#33ff33] p-2 overflow-y-auto font-mono text-sm"
   >
     <div v-for="(line, index) in lines" :key="index" class="mb-1">
       <div v-if="line.type === 'cmd'" class="flex items-center gap-2">
-        <span class="text-[#a6e3a1] font-bold">john@porto</span>
-        <span class="text-[#cdd6f4]">~</span>
-        <span class="text-[#89b4fa] font-bold">$</span>
-        <span v-if="index !== lines.length - 1" class="text-[#cdd6f4] break-all">{{ line.text }}</span>
+        <span class="text-[#33ff33] font-bold">john@porto</span>
+        <span class="text-white">~</span>
+        <span class="text-[#33ff33] font-bold">$</span>
+        <span v-if="index !== lines.length - 1" class="text-[#33ff33] break-all">{{ line.text }}</span>
         <div v-else class="ml-1 flex-1 relative leading-none">
-          <span class="text-[#cdd6f4] font-mono break-all whitespace-pre-wrap">{{ currentInput }}</span><span class="inline-block w-2.5 h-4 bg-[#cdd6f4] animate-blink align-middle mb-[3px] ml-[1px]"></span>
+          <span class="text-[#33ff33] font-mono break-all whitespace-pre-wrap">{{ currentInput }}</span><span class="inline-block w-2.5 h-4 bg-[#33ff33] animate-blink align-middle mb-[3px] ml-[1px]"></span>
           <input
             v-model="currentInput"
             @keydown.enter="handleEnter"
@@ -22,16 +22,16 @@
       </div>
       <div
         v-else-if="line.type === 'output'"
-        class="whitespace-pre-wrap text-[#bac2de]"
+        class="whitespace-pre-wrap text-[#33ff33]"
       >
         {{ line.text?.trim() }}
       </div>
-      <div v-else-if="line.type === 'neofetch'" class="flex flex-col sm:flex-row gap-4 items-center sm:items-start text-[#bac2de]">
+      <div v-else-if="line.type === 'neofetch'" class="flex flex-col sm:flex-row gap-4 items-center sm:items-start text-[#33ff33]">
         <div class="sm:w-1/3 w-3/4 max-w-[400px]">
-          <img :src="line.imgSrc" alt="gambar" class="w-full h-auto rounded-md" v-if="line.imgSrc"/>
-          <div v-else class="text-center italic opacity-50 border border-dashed border-zinc-500 rounded p-4">Image placeholder: {{ line.imgSrc }}</div>
+          <img :src="line.imgSrc" alt="gambar" class="w-full h-auto border border-[#33ff33]" v-if="line.imgSrc"/>
+          <div v-else class="text-center italic opacity-70 border border-dashed border-[#33ff33] p-4">Image placeholder: {{ line.imgSrc }}</div>
         </div>
-        <div class="whitespace-pre-wrap flex-1 mt-2 sm:mt-0">
+        <div class="whitespace-pre-wrap flex-1 mt-2 sm:mt-0 leading-relaxed">
           {{ line.text?.trim() }}
         </div>
       </div>
