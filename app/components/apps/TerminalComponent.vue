@@ -98,10 +98,23 @@ const runCommand = (cmd: string) => {
       lines.value = [];
       break;
     case "ls":
-      lines.value.push({ type: "output", text: "about.txt\ncontact.txt" });
+      lines.value.push({ type: "output", text: "about.txt\nexperience.txt\neducation.txt\ncertificate.txt\nprojects.txt\ncontact.txt" });
       break;
     case "cat about.txt":
-      lines.value.push({ type: "output", text: "Halo! Saya adalah John ." });
+      lines.value.push({ type: "output", text: "Halo! Saya adalah John." });
+      break;
+    case "cat experience.txt":
+    case "experience":
+      lines.value.push({ type: "output", text: "CAREER & EXPERIENCE HISTORY:\n- Full-Stack Web Developer (Intern) @ Tech Solutions Studio (2024-Present)\n- Lead Frontend Developer @ E-Voting OSIS Team Project (2023-2024)\n- Asisten Laboratorium Komputer (2022-2023)\n\nRun workspace link [3]experience to view complete career logs." });
+      break;
+    case "cat education.txt":
+    case "education":
+      lines.value.push({ type: "output", text: "FORMAL ACADEMIC HISTORY:\n- Teknik Informatika (Software Engineering) - Universitas Padjadjaran (2026-2030 Expected)\n- SMK Rekayasa Perangkat Lunak - SMK Informatika (2018-2021)\n\nRun workspace link [4]education to view academic details." });
+      break;
+    case "cat certificate.txt":
+    case "certificate":
+    case "certificates":
+      lines.value.push({ type: "output", text: "CERTIFICATIONS & CREDENTIALS:\n- Full-Stack Web Development Certification (Dicoding / Google Bangkit)\n- Cloud Computing & DevOps Fundamentals (AWS Training)\n- Cyber Security & Network Basics (Cisco Networking Academy)\n\nRun workspace link [5]certificate to inspect verified credentials." });
       break;
     case "github":
       window.open("https://github.com/JohnObama24/", "_blank")
@@ -112,7 +125,7 @@ const runCommand = (cmd: string) => {
       lines.value.push({ type: "output", text: "redirecting to instagram..." });
       break;
     case "help":
-      lines.value.push({ type: "output", text: "Available commands:\n- ls\n- cat [file]\n- neofetch\n- clear\n- help\n- github\n- instagram\n- linkedin\n-  " });
+      lines.value.push({ type: "output", text: "Available commands:\n- ls\n- cat [file]\n- experience\n- education\n- certificate\n- neofetch\n- clear\n- help\n- github\n- instagram" });
       break;
     case "neofetch":
       lines.value.push({

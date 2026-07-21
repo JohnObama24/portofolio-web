@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const time = ref('')
 const date = ref('')
-const isCrtActive = useState('crt-active', () => true)
+const isCrtActive = useState('crt-active', () => false)
 
 let interval: number
 
@@ -32,8 +32,17 @@ onUnmounted(() => {
       <NuxtLink to="/project" class="px-2 md:px-2 h-full flex items-center transition-colors font-bold whitespace-nowrap" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">
         <span class="mr-1 opacity-50">[2]</span>project
       </NuxtLink>
+      <NuxtLink to="/experience" class="px-2 md:px-2 h-full flex items-center transition-colors font-bold whitespace-nowrap" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">
+        <span class="mr-1 opacity-50">[3]</span>experience
+      </NuxtLink>
+      <NuxtLink to="/education" class="px-2 md:px-2 h-full flex items-center transition-colors font-bold whitespace-nowrap" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">
+        <span class="mr-1 opacity-50">[4]</span>education
+      </NuxtLink>
+      <NuxtLink to="/certificate" class="px-2 md:px-2 h-full flex items-center transition-colors font-bold whitespace-nowrap" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">
+        <span class="mr-1 opacity-50">[5]</span>certificate
+      </NuxtLink>
       <NuxtLink to="/contact" class="px-2 md:px-2 h-full flex items-center transition-colors font-bold whitespace-nowrap" active-class="bg-zinc-700 text-zinc-100" inactive-class="text-zinc-500 hover:text-zinc-300">
-        <span class="mr-1 opacity-50">[3]</span>contact
+        <span class="mr-1 opacity-50">[6]</span>contact
       </NuxtLink>
     </div>
 

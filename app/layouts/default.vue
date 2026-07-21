@@ -50,7 +50,7 @@ import BarComponent from "~/components/BarComponent.vue";
 import { onMounted, onUnmounted, ref, watch } from "vue";
 
 const isDesktopReady = ref(false);
-const isCrtActive = useState('crt-active', () => true);
+const isCrtActive = useState('crt-active', () => false);
 const isPowerOnAnimating = ref(false);
 const vhsTime = ref('');
 
