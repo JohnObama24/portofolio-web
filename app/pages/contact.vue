@@ -109,7 +109,7 @@
             <span class="absolute top-2 left-2 bg-black px-1.5 py-0.5 border border-[#33ff33] text-[9px] font-bold tracking-widest transition-all" :class="isTyping ? 'text-[#33ff33] border-[#33ff33]' : 'text-zinc-600 border-zinc-800'">
               {{ isTyping ? '● MONITORING ACTION' : '○ MONITOR STANDBY' }}
             </span>
-            <img :src="currentImage" alt="action state" class="w-full h-auto max-h-[220px] md:max-h-[300px] object-contain transition-all duration-300 mx-auto" />
+            <img :src="currentImage" alt="action state" class="w-full h-auto max-h-55 md:max-h-75 object-contain transition-all duration-300 mx-auto" />
           </div>
           
           <div class="w-full font-mono text-[10px] flex flex-col border border-[#33ff33]/30 p-2 gap-1 bg-[#051105]">

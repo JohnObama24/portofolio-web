@@ -79,7 +79,7 @@
             
             <a href="https://github.com/JohnObama24" target="_blank" class="flex-1 w-full overflow-x-auto overflow-y-hidden scrollbar-hide py-2 relative scroller">
               <div class="min-w-max h-full flex items-center">
-                <div class="grid grid-rows-7 gap-[3px] sm:gap-1 lg:gap-1.5 grid-flow-col">
+                <div class="grid grid-rows-7 gap-0.75 sm:gap-1 lg:gap-1.5 grid-flow-col">
                   <div v-for="i in emptyCells" :key="`empty-${i}`" class="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5"></div>
                   
                   <div

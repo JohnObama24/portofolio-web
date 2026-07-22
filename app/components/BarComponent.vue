@@ -47,7 +47,7 @@ onUnmounted(() => {
     </div>
 
     <!-- Window Title -->
-    <div class="absolute left-1/2 -translate-x-1/2 hidden sm:block text-zinc-400 font-semibold truncate max-w-[150px] md:max-w-md z-0 pointer-events-none">
+    <div class="absolute left-1/2 -translate-x-1/2 hidden sm:block text-zinc-400 font-semibold truncate max-w-37.5 md:max-w-md z-0 pointer-events-none">
       ~ / porto
     </div>
 
